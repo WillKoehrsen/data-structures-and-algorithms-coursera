@@ -28,7 +28,17 @@ def fib(a):
 
 
 def fib_sum(n):
-    return (fib(n + 1) - 1) % 10
+    if n <= 1:
+        return n
+
+    n = (n+2) % 60
+    fib = [0, 1]
+    for i in range(2, n+1):
+        fib.append((fib[i-1] % 10 + fib[i-2] % 10) % 10)
+
+    if fib[n] == 0:
+        return 9
+    return fib[n] % 10 - 1
 
 
 if __name__ == "__main__":

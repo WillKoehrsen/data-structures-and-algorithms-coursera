@@ -15,7 +15,7 @@ def get_fibonacci_huge_naive(n, m):
     return current % m
 
 
-def get_fibonacci_huge(n, m):
+def get_fibonacci_huge(n, m, return_arr=False):
     if n <= 1:
         return n
 
@@ -23,15 +23,19 @@ def get_fibonacci_huge(n, m):
     previous = 0
     current = 1
 
-    for i in range(n - 1):
+    for i in range(1, n):
         temp = previous
         previous = current % m
         current = (temp + current) % m
         arr.append(current)
         if current == 1 and previous == 0:
-            index = n % (i + 1)
+            index = n % i
+            if return_arr:
+                return arr
             return arr[index]
 
+    if return_arr:
+        return arr
     return current
 
 
