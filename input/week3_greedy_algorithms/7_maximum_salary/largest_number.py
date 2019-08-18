@@ -14,6 +14,7 @@ def is_greater_equal(a, b):
 
 def largest_number(a):
     ans = []
+
     while a:
         max_digit = float("-inf")
         # Iterate through each remaining digit
