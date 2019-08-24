@@ -31,10 +31,10 @@ def fib_sum(n):
     if n <= 1:
         return n
 
-    n = (n+2) % 60
+    n = (n + 2) % 60
     fib = [0, 1]
-    for i in range(2, n+1):
-        fib.append((fib[i-1] % 10 + fib[i-2] % 10) % 10)
+    for i in range(2, n + 1):
+        fib.append((fib[i - 1] % 10 + fib[i - 2] % 10) % 10)
 
     if fib[n] == 0:
         return 9

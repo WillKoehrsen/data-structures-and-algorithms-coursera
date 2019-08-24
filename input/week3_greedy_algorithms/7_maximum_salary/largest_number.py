@@ -34,4 +34,3 @@ if __name__ == "__main__":
     data = input.split()
     a = data[1:]
     print(largest_number(a))
-

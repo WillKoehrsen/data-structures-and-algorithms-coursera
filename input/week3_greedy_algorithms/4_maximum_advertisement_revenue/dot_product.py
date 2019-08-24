@@ -26,4 +26,3 @@ if __name__ == "__main__":
     a = data[1 : (n + 1)]
     b = data[(n + 1) :]
     print(max_dot_product(a, b))
-
