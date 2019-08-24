@@ -3,9 +3,23 @@ import sys
 import random
 
 
-def partition3(a, l, r):
-    # write your code here
-    pass
+def partition3(a, pivot, lo, hi):
+
+    l = lo
+    r = lo
+    u = hi
+
+    while r <= u:
+        if a[r] < pivot:
+            a[l], a[r] = a[r], a[l]
+            l += 1
+            r += 1
+        elif a[r] > pivot:
+            a[r], a[u] = a[u], a[r]
+            u -= 1
+        else:
+            r += 1
+    return l, r
 
 
 def partition2(a, l, r):
@@ -19,15 +33,13 @@ def partition2(a, l, r):
     return j
 
 
-def randomized_quick_sort(a, l, r):
-    if l >= r:
+def randomized_quick_sort(a, lo, hi):
+    if lo >= hi:
         return
-    k = random.randint(l, r)
-    a[l], a[k] = a[k], a[l]
-    # use partition3
-    m = partition2(a, l, r)
-    randomized_quick_sort(a, l, m - 1)
-    randomized_quick_sort(a, m + 1, r)
+    pivot = a[lo]
+    left, right = partition3(a, pivot, lo, hi)
+    randomized_quick_sort(a, lo, left - 1)
+    randomized_quick_sort(a, right, hi)
 
 
 if __name__ == "__main__":

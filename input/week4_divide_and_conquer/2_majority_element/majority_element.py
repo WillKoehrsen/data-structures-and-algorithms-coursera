@@ -3,13 +3,25 @@ import sys
 from collections import Counter
 
 
-def get_majority_element(a, left, right):
-    counts = Counter(a)
-    most_common = counts.most_common(1)[0]
+def get_majority_element(a, left=None, right=None):
+    n = len(a)
+    if n == 1:
+        return a[0]
+    k = n // 2
 
-    if most_common[1] > len(a) / 2:
-        return most_common[0]
-    return 0
+    elem_lsub = get_majority_element(a[:k])
+    elem_rsub = get_majority_element(a[k:])
+    if elem_lsub == elem_rsub:
+        return elem_lsub
+
+    lcount = a.count(elem_lsub)
+    rcount = a.count(elem_rsub)
+    if lcount > n / 2:
+        return elem_lsub
+    elif rcount > n / 2:
+        return elem_rsub
+
+    return -1
 
 
 if __name__ == "__main__":
