@@ -36,7 +36,7 @@ def partition2(a, l, r):
 def randomized_quick_sort(a, lo, hi):
     if lo >= hi:
         return
-    pivot = a[lo]
+    pivot = random.randint(lo, hi)
     left, right = partition3(a, pivot, lo, hi)
     randomized_quick_sort(a, lo, left - 1)
     randomized_quick_sort(a, right, hi)
